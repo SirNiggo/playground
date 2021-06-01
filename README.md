@@ -25,3 +25,6 @@ This Repository is made to accomplish the following things:
 
 ## Want to contribute?
 If you do know features that haven't been showcased here please add workflows and examples via PR!
+
+# Ressources used
+sdras/awesome-actions: https://github.com/sdras/awesome-actions
