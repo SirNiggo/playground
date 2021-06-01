@@ -1,0 +1,12 @@
+name: GitHub PR Labeled Example
+on:
+  pull_request:
+    types: [labeled]
+jobs:
+  pull_request_labeled:
+    # This job always runs when a PR has been labeled
+    name: PR Labeled
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "A pull request has been labeled!"

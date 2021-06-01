@@ -1,0 +1,12 @@
+name: GitHub Issue Closed Example
+on:
+  issues:
+    types: [closed]
+jobs:
+  issue_opened:
+    # This job always runs when an issue is closed
+    name: Issue Closed
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "GitHub issue #${{ github.event.issue.number }} has been closed!"

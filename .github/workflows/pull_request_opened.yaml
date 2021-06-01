@@ -1,0 +1,12 @@
+name: GitHub PR Opened Example
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  pull_request_opened:
+    # This job always runs when a PR is opened
+    name: PR Opened
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "A pull request has been opened!"

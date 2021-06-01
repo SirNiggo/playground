@@ -1,0 +1,12 @@
+name: GitHub Issue Labeled Example
+on:
+  issues:
+    types: [labeled]
+jobs:
+  issue_labeled:
+    # This job always runs when an issue is labeled
+    name: Issue Labeled
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "GitHub issue #${{ github.event.issue.number }} has been labeled!"

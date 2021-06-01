@@ -1,0 +1,20 @@
+name: GitHub Workflow Run with filter Example
+on:
+  workflow_run:
+    types: [completed]
+    workflows:
+      - "GitHub Push Example"
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: |
+          echo "The \"GitHub Push Example\" workflow has completed successfully!"
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: |
+          echo "The \"GitHub Push Example\" workflow has failed!"
+

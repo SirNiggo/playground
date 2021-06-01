@@ -1,0 +1,12 @@
+name: GitHub PR Review Comment Example
+on:
+  pull_request_review_comment:
+    types: [created]
+jobs:
+  pull_request_review_comment_created:
+    # This job always runs when a PR Review comment has been created
+    name: PR Review Comment created
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "A pull request review comment has been created!"

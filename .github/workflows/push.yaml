@@ -1,0 +1,13 @@
+name: GitHub Push Example
+on:
+  push:
+    branches:
+      - main
+jobs:
+  push_on_main:
+    # This job always runs when a Push was made to "main" branch
+    name: Push to Main created
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "A push has been made to branch \"main\"!"

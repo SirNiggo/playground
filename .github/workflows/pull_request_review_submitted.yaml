@@ -1,0 +1,12 @@
+name: GitHub PR Review submitted Example
+on:
+  pull_request_review:
+    types: [submitted]
+jobs:
+  pull_request_review_submitted:
+    # This job always runs when a PR review has been submitted
+    name: PR Review Submitted
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "A pull request review has been submitted!"

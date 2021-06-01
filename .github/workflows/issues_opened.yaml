@@ -1,0 +1,12 @@
+name: GitHub Issue Opened Example
+on:
+  issues:
+    types: [opened]
+jobs:
+  issue_opened:
+    # This job always runs when an issue is opened
+    name: Issue Opened
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "GitHub issue #${{ github.event.issue.number }} has been opened!"
