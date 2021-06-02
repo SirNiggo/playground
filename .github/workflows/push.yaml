@@ -1,8 +1,6 @@
 name: GitHub Push Example
 on:
-  push:
-    branches:
-      - main
+  push
 jobs:
   push_on_main:
     # This job always runs when a Push was made to "main" branch
