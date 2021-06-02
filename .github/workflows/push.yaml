@@ -1,13 +1,20 @@
 name: GitHub Push Example
 on:
-  push:
-    branches:
-      - main
+  push
 jobs:
-  push_on_main:
+  push:
     # This job always runs when a Push was made to "main" branch
-    name: Push to Main created
+    name: Push created
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "A push has been made to branch \"main\"!"
+      - uses: actions/github-script@v4
+        id: context
+        with:
+          script: console.log(context)
+      - uses: actions/github-script@v4
+        id: examplescript
+        with:
+          script: return "Hello!"
+          result-encoding: string
+      - name: Show return value of examplescript
+        run: echo "${{steps.examplescript.outputs.result}}"
