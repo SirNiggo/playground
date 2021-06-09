@@ -3,7 +3,7 @@ on:
   push
 jobs:
   push:
-    # This job always runs when a Push was made to "main" branch
+    # This job always runs when a Push was made
     name: Push created
     runs-on: ubuntu-latest
     steps:
