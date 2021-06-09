@@ -12,9 +12,8 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - run: cd workflow-example
-      - run: mvn --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp target/*.jar staging
+      - run: cd workflow-example && mvn --batch-mode --update-snapshots verify
+      - run: mkdir staging && cp workflow-example/target/*.jar staging
       - uses: actions/upload-artifact@v2
         with:
           name: Package
