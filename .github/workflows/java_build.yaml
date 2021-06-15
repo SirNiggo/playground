@@ -18,7 +18,7 @@ jobs:
       - name: Build application
         run: cd workflow-example && mvn --batch-mode --update-snapshots verify
       - name: Deploy artifact
-        run: mvn --batch-mode deploy
+        run: cd workflow-example && mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: mkdir staging && cp workflow-example/target/*.jar staging
