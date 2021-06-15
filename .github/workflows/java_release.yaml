@@ -3,8 +3,9 @@ on:
   push
 jobs:
   publish:
-    # This job always runs when a Push was made to main branch
+    # This job always runs when a Push was made to a tag
     name: Push created
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -16,13 +17,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Deploy artifact
-        if: startsWith(github.ref, 'refs/tags/')
         run: cd workflow-example && mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: workflow-example/target/*.jar
         env:
