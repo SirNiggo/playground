@@ -6,9 +6,6 @@ jobs:
     # This job always runs when a Push was made to main branch
     name: Push created
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
@@ -17,14 +14,3 @@ jobs:
           distribution: 'adopt'
       - name: Build application
         run: cd workflow-example && mvn --batch-mode --update-snapshots verify
-      - name: Deploy artifact
-        run: cd workflow-example && mvn --batch-mode deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: workflow-example/target/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
